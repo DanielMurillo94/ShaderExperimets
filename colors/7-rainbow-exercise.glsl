@@ -12,8 +12,8 @@ vec4 color4 = vec4(0.1765, 0.4431, 0.8196, 0.87);
 void main() {
     vec2 st = gl_FragCoord.xy / u_resolution;
     vec3 color = vec3(color1);
-    color = mix(vec3(color2), color, 1.0 - distance(color1.w, st.x));
-    color = mix(vec3(color3), color, 1.0 - distance(color2.w, st.x));
-    color = mix(vec3(color4), color, 1.0 - distance(color3.w, st.x));
+    color = mix(color, vec3(color2), distance(color1.w, st.x));
+    color = mix(color, vec3(color3), distance(color2.w, st.x));
+    color = mix(color, vec3(color4), distance(color3.w, st.x));
     gl_FragColor = vec4(color, 1.0);
 }
